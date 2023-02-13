@@ -1,0 +1,49 @@
+//main.c
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main(int argc, char *arvg[])
+{
+    int a, b, c, d;
+    double x1, 2;
+    printf("Insert your meanings:\n");
+    scanf("%d %d %d", &a, &b, &c);
+    d=b*b-4*a*c;
+    printf("D=%d \n", d);
+    if (d<0)
+    {
+        printf("No roots");
+        return 0;
+    }
+    if (d==0)
+    {
+        x1=-(b/(2*a));
+        printf("x1=%lf", x1);
+        return 0;
+    }
+    x1 = (-b + sqrt(d)) / (2*a);
+    x2 = (-b - sqrt(d)) / (2*a);
+    printf("x1=%lf, x2=%lf",x1,x2);
+}
+
+
+
+
+{
+    "verion": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "main.c", "-o", "main.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
