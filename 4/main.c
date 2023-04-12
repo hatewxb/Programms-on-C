@@ -8,7 +8,7 @@ int main()
 	scanf("%lf%lf%lf", &a, &b, &c);
 	if ((a+b <= c) || (a+c <= b) || (b+c <= a))
 	{
-		printf("Этого треугольника не существует\n");
+		printf("This triangle doesnt exist\n");
 		exit(0);
 	}
 	else
