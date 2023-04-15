@@ -50,7 +50,7 @@ int main()
         printf("Person %d:\n", i+1);
         printf("Name: %s\n", arr2[i].name);
         printf("Surname: %s\n", arr2[i].surname);
-        printf("Birt year: %d\n", arr2[i].birth_year);
+        printf("Birth year: %d\n", arr2[i].birth_year);
     }
     return 0;
 }
