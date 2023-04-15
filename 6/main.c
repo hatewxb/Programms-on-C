@@ -14,14 +14,15 @@ int main() {
         exit(1);
     }
 
-    while (fgets(line, 100, input_file)) {
-        year = atoi(strtok(line, " \n\t")) + 1900; // узнаем год рождения
-        strtok(NULL, " \n\t"); // скип фамилия
-        strtok(NULL, " \n\t"); // скип имя
+    while (fgets(line, 100, input_file)) 
+    {
+        year = atoi(strtok(line, " \n\t")) + 1900; 
+        strtok(NULL, " \n\t"); 
+        strtok(NULL, " \n\t"); 
 	strtok(NULL, " \n\t");
 
         if (year > 1980) {
-            fprintf(output_file, "%s", line); // записываем строку в выходной файл
+            fprintf(output_file, "%s", line);
         }
     }
 

@@ -1,0 +1,2 @@
+//        sscanf(hold, "%*s %*s %*s %d", &year); 
+//        if (year > 1980) 
