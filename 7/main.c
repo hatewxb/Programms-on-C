@@ -22,18 +22,18 @@ void bubble_sort(human arr[], int n) {
   
 int main() {  
   int size;  
-  printf("Enter the number of people ");  
+  printf("Enter the number of people ");  //колличество людей
   scanf("%d", &size);  
   
   human arr1[size];   
   human arr2[size];   
   
   int choice;  
-  printf("Select data source:\n1. Console input\n2. Reading from file\n");  
+  printf("Select data source:\n1. Console input\n2. Reading from file\n");  //выбор ввода данных
   scanf("%d", &choice);  
   
   if (choice == 1) {  
-    printf("Enter details for %d people:\n", size);  
+    printf("Enter details for %d people:\n", size);  //ручная запись
     for (int i = 0; i < size; i++) {  
       printf("Human %d:\n", i+1);  
       printf("Name: ");  
@@ -44,7 +44,7 @@ int main() {
       scanf("%d", &arr1[i].birth_year);  
     }  
   } else if (choice == 2) {  
-    FILE *file = fopen("data.txt", "r");  
+    FILE *file = fopen("data.txt", "r");  //чтение файла
     if (file == NULL) {  
       printf("Error opening file\n");  
       return 1;  
