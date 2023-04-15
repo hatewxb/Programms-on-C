@@ -1,56 +1,74 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct 
-{
-    char name[20];
-    char surname[20];
-    int birth_year;
-} humen;
-
-int main() 
-{
-    humen arr1[4];
-	humen arr2[4];
-
-    printf("Enter data for the firsrt array:\n");
-    int i;
-    for (i = 0; i < 4; i++) 
-	{
-        printf("Person %d:\n", i+1);
-        printf("Name: ");
-        scanf("%s", arr1[i].name);
-        printf("Surname: ");
-        scanf("%s", arr1[i].surname);
-        printf("Birth year: ");
-        scanf("%d", &arr1[i].birth_year);
-    }
-    
-    memcpy(arr2, arr1, sizeof(arr1));
-    
-    for (i = 0; i < 3; i++) 
-	{
-    	int j;
-        for (j = i+1; j < 4; j++) 
-		{
-            if (arr2[i].birth_year > arr2[j].birth_year) 
-			{
-                humen temp = arr2[i];
-                arr2[i] = arr2[j];
-                arr2[j] = temp;
-            }
-        }
-    }
-    
-    printf("\nSorted array:\n");
-    
-    for (i = 0; i < 4; i++) 
-	{
-        printf("Person %d:\n", i+1);
-        printf("Name: %s\n", arr2[i].name);
-        printf("Surname: %s\n", arr2[i].surname);
-        printf("Birth year: %d\n", arr2[i].birth_year);
-    }
-    return 0;
+#include <stdio.h>  
+#include <stdio.h>  
+#include <string.h>  
+  
+typedef struct {  //задаем структуру humen
+  char name[50];  
+  char surname[50];  
+  int birth_year;  
+} human;  
+  
+void bubble_sort(human arr[], int n) {  
+  for (int i = 0; i < n-1; i++) {  
+    for (int j = 0; j < n-i-1; j++) {  
+      if (arr[j].birth_year > arr[j+1].birth_year) {  
+        human temp = arr[j];  
+        arr[j] = arr[j+1];  
+        arr[j+1] = temp;  
+      }  
+    }  
+  }  
+}  
+  
+int main() {  
+  int size;  
+  printf("Enter the number of people ");  
+  scanf("%d", &size);  
+  
+  human arr1[size];   
+  human arr2[size];   
+  
+  int choice;  
+  printf("Select data source:\n1. Console input\n2. Reading from file\n");  
+  scanf("%d", &choice);  
+  
+  if (choice == 1) {  
+    printf("Enter details for %d people:\n", size);  
+    for (int i = 0; i < size; i++) {  
+      printf("Human %d:\n", i+1);  
+      printf("Name: ");  
+      scanf("%s", arr1[i].name);  
+      printf("Surname: ");  
+      scanf("%s", arr1[i].surname);  
+      printf("Year of birth: ");  
+      scanf("%d", &arr1[i].birth_year);  
+    }  
+  } else if (choice == 2) {  
+    FILE *file = fopen("data.txt", "r");  
+    if (file == NULL) {  
+      printf("Error opening file\n");  
+      return 1;  
+    }  
+    int i = 0;  
+    while (fscanf(file, "%s %s %d", arr1[i].name, arr1[i].surname, &arr1[i].birth_year) != EOF && i < size) {  
+      i++;  
+    }  
+    fclose(file);  
+    if (i < size) {  
+      printf("Not enough data in file to sort %d people\n", size);  
+      return 1;  
+    }  
+  } else {  
+    printf("Wrong choice\n");  
+    return 1;  
+  }  
+  bubble_sort(arr1, size);  
+  memcpy(arr2, arr1, sizeof(human) * size);  
+  
+  printf("\nPeople sorted by year of birth:\n");  
+  for (int j = 0; j < size; j++) {  
+      printf("%s %s, %d\n", arr2[j].name, arr2[j].surname, arr2[j].birth_year);  
+  }  
+  
+  return 0;  
 }
