@@ -14,7 +14,7 @@ int main()
     humen arr1[4];
 	humen arr2[4];
 
-    printf("enter data for the firsrt array:\n");
+    printf("Enter data for the firsrt array:\n");
     int i;
     for (i = 0; i < 4; i++) 
 	{
